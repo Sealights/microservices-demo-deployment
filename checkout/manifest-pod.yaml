@@ -22,6 +22,9 @@ spec:
             - name: c-http
               containerPort: 5050
               protocol: TCP
+            - name: c-http-2
+              containerPort: 5051
+              protocol: TCP              
           env:
             - name: SHIPPING_SERVICE_ADDR
               value: "sl-boutique-shippingservice:50051"   
