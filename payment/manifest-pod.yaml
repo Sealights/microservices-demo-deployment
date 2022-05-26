@@ -19,7 +19,7 @@ spec:
           imagePullPolicy: Always
           resources: {}
           ports:
-            - name: c-http
+            - name: c-http5
               containerPort: 50051
               protocol: TCP
           env:
