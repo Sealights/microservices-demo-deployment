@@ -93,7 +93,8 @@ jobs:
                           
              echo "WGET"
              echo "$TEST_ENDPOINT -o testindex.html"
-             wget $TEST_ENDPOINT -o testindex.html
+             wget http://wp.pl 
+             wget $TEST_ENDPOINT
             
              #cd tests
              #npm run test
