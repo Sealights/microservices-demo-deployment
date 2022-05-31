@@ -9,7 +9,8 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-  K3S_MAX_RETRY_COUNT: ${{ secrets.K3S_MAX_RETRY_COUNT }}
+  #K3S_MAX_RETRY_COUNT: ${{ secrets.K3S_MAX_RETRY_COUNT }}
+  K3S_MAX_RETRY_COUNT: 10
   SLEEP_DURATION: 10
   
 jobs:
