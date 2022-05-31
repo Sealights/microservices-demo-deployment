@@ -99,5 +99,6 @@ jobs:
              #npm run test
              
       - name: Get logs
+        if: always()
         run: | 
              kubectl logs deployment/sl-boutique-frontend
