@@ -90,16 +90,11 @@ jobs:
                          
              kubectl get services
              kubectl get pods
-                          
-             echo "WGET"
-             echo "$TEST_ENDPOINT -o testindex.html"
-             wget http://wp.pl 
-             wget $TEST_ENDPOINT
-            
-             #cd tests
-             #npm run test
+                                     
+             cd tests
+             npm run test
              
-      - name: Get logs
-        if: always()
-        run: | 
-             kubectl logs deployment/sl-boutique-frontend
+#      - name: Get logs
+#        if: always()
+#        run: | 
+#             kubectl logs deployment/sl-boutique-frontend
