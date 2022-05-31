@@ -89,7 +89,8 @@ jobs:
              echo "Test entry point: $TEST_ENDPOINT"
                          
              kubectl get services
-             kubvectl get pods
+             kubectl get pods
+             echo "WGET"
              wget $TEST_ENDPOINT -o testindex.html
             
              #cd tests
