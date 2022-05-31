@@ -90,6 +90,8 @@ jobs:
                          
              kubectl get services
              kubectl get pods
+             kubectl logs -f deployment/sl-boutique-frontend >> k3s-logs.txt
+             cat k3s-logs.txt
              echo "WGET"
              wget $TEST_ENDPOINT -o testindex.html
             
