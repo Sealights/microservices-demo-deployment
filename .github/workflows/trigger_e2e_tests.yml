@@ -1,5 +1,5 @@
 ﻿
-name: Push config to deployment repo
+name: Execute e2e tests
 on:
   push:
     branches: [ master ]
@@ -9,8 +9,8 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-  GITHUB_USERNAME: ${{ env.GH_USER_NAME }}
-  GITHUB_USER_EMAIL: ${{ env.GH_USER_EMAIL }}
+  K3S_MAX_RETRY_COUNT: ${{ secrets.K3S_MAX_RETRY_COUNT }}
+  SLEEP_DURATION: 10
   
 jobs:
   trigger_e2e_tests:
@@ -22,33 +22,68 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - uses: actions/checkout@v3
-
-#      - name: Configure AWS credentials
-#        uses: aws-actions/configure-aws-credentials@v1
-#        with:
-#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#          aws-region: eu-west-1
-  
-      - name: Set up k3s
-        uses: nolar/setup-k3d-k3s@v1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.GH_PAT }}
-          k3d-name: sl-boutique
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+        
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        
+      - uses: actions/checkout@v3
+      
+      - name: Set up k3s
+        uses: debianmaster/actions-k3s@master
+        id: k3s
+        with:
+          version: 'latest' 
+          
       - name: Deploy services
         run: |
-          kubectl apply -R -f ./k3s/
-          #echo `kubectl get services`
+          kubectl create secret docker-registry aws-secret --docker-server=159616352881.dkr.ecr.eu-west-1.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password)          
+          kubectl apply -R -f ./k3s/                      
           
-      - name: Deployment repo fetch     
+      - name: Wait for fetching containers
+        run: |
+          chmod +rx ./k3s-deployment/wait-for-pods-statuses.sh          
+          ./k3s-deployment/wait-for-pods-statuses.sh $K3S_MAX_RETRY_COUNT $SLEEP_DURATION
+          
+      - name: Wait for pods
+        run: |
+          chmod +rx ./k3s-deployment/wait-for-pods-phases.sh          
+          ./k3s-deployment/wait-for-pods-phases.sh $K3S_MAX_RETRY_COUNT $SLEEP_DURATION
+          
+      - name: Fetch deployment repo
         run: |             
-             git config --global user.name $GITHUB_USERNAME
-             git config --global user.email $GITHUB_USER_EMAIL
              export GITHUB_TOKEN=
              echo $GITHUB_TOKEN >> token.txt
-             gh auth login --with-token < token.txt
              git clone https://$GITHUB_TOKEN@github.com/Sealights/microservices-demo-tests.git tests
              git remote set-url origin https://$GITHUB_TOKEN@github.com/Sealights/microservices-demo-tests.git
+             
+      - name: Install testing tools     
+        run: |             
+             cd tests             
+             npm install
+             
+      - name: Wait for external IPs
+        run: |           
+            chmod +rx ./k3s-deployment/wait-for-external-ip.sh        
+            ./k3s-deployment/wait-for-external-ip.sh $K3S_MAX_RETRY_COUNT $SLEEP_DURATION
+               
+      - name: Test Frontend availability
+        run: |
+             export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)             
+             ping $BOUTIQUE_FRONTEND_IP -c 5
+               
+      - name: Run e2e tests     
+        run: |
+             export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)                          
+             echo "TEST: $BOUTIQUE_FRONTEND_IP"
+             export TEST_ENDPOINT=http://$BOUTIQUE_FRONTEND_IP:8080
+             echo "Test entry point: $TEST_ENDPOINT"
+             
              cd tests
-             echo `ls`
+             npm run test
