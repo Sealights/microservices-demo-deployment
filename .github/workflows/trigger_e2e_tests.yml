@@ -73,6 +73,8 @@ jobs:
         run: |           
             chmod +rx ./k3s-deployment/wait-for-external-ip.sh        
             ./k3s-deployment/wait-for-external-ip.sh $K3S_MAX_RETRY_COUNT $SLEEP_DURATION
+            
+            kubectl get svc
                
       - name: Test Frontend availability
         run: |
