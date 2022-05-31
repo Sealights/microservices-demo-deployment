@@ -87,8 +87,10 @@ jobs:
              echo "TEST: $BOUTIQUE_FRONTEND_IP"
              export TEST_ENDPOINT=http://$BOUTIQUE_FRONTEND_IP:8080
              echo "Test entry point: $TEST_ENDPOINT"
-            
+                         
+             kubectl get services
+             kubvectl get pods
              wget $TEST_ENDPOINT -o testindex.html
-             
-             cd tests
-             npm run test
+            
+             #cd tests
+             #npm run test
