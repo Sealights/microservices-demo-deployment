@@ -92,8 +92,8 @@ jobs:
              kubectl get pods
                           
              echo "WGET"
-             echo "$TEST_ENDPOINT" -o testindex.html"
-             wget "$TEST_ENDPOINT" -o testindex.html
+             echo "$TEST_ENDPOINT -o testindex.html"
+             wget $TEST_ENDPOINT -o testindex.html
             
              #cd tests
              #npm run test
