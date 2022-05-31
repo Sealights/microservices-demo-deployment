@@ -87,8 +87,8 @@ jobs:
              echo "TEST: $BOUTIQUE_FRONTEND_IP"
              export TEST_ENDPOINT=http://$BOUTIQUE_FRONTEND_IP:8080
              echo "Test entry point: $TEST_ENDPOINT"
-             sleep 20
-             #wget $TEST_ENDPOINT
+            
+             wget $TEST_ENDPOINT -o testindex.html
              
              cd tests
              npm run test
