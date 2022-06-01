@@ -43,4 +43,6 @@ spec:
             - name: AD_SERVICE_ADDR
               value: "sl-boutique-adservice:9555" 
             - name: PAYMENT_SERVICE_ADDR
-              value: "sl-boutique-paymentservice:50051"                       
+              value: "sl-boutique-paymentservice:50051"
+            - name: VERSION
+              value: "1.0"
