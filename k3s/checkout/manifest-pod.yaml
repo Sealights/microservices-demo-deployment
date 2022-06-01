@@ -15,7 +15,7 @@ spec:
         app.kubernetes.io/name: sl-boutique-checkoutservice
     spec:
       imagePullSecrets:
-        - name: aws-secret    
+        - name: aws-secret
       containers:
         - image: 159616352881.dkr.ecr.eu-west-1.amazonaws.com/microservices-demo-checkoutservice:latest
           name: checkoutservice
@@ -27,13 +27,13 @@ spec:
               protocol: TCP
           env:
             - name: SHIPPING_SERVICE_ADDR
-              value: "sl-boutique-shippingservice:50051"   
+              value: "sl-boutique-shippingservice:50051"
             - name: PRODUCT_CATALOG_SERVICE_ADDR
-              value: "sl-boutique-productcatalog:3550" 
+              value: "sl-boutique-productcatalog:3550"
             - name: CART_SERVICE_ADDR
               value: "sl-boutique-cartservice:7070"
             - name: RECOMMENDATION_SERVICE_ADDR
-              value: "sl-boutique-recommendationservice:8080"                
+              value: "sl-boutique-recommendationservice:8080"
             - name: CURRENCY_SERVICE_ADDR
               value: "sl-boutique-currencyservice:7000"
             - name: EMAIL_SERVICE_ADDR
@@ -41,8 +41,8 @@ spec:
             - name: CHECKOUT_SERVICE_ADDR
               value: "sl-boutique-checkoutservice:5050"
             - name: AD_SERVICE_ADDR
-              value: "sl-boutique-adservice:9555" 
+              value: "sl-boutique-adservice:9555"
             - name: PAYMENT_SERVICE_ADDR
               value: "sl-boutique-paymentservice:50051"
             - name: VERSION
-              value: "1.0"
+              value: "$NOW"
