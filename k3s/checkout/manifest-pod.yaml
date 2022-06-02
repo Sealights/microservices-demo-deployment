@@ -45,4 +45,4 @@ spec:
             - name: PAYMENT_SERVICE_ADDR
               value: "sl-boutique-paymentservice:50051"
             - name: VERSION
-              value: "2022-06-02 12:28:38,683"
+              value: "2022-06-02 14:08:42,547"
