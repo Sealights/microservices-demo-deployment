@@ -94,7 +94,7 @@ jobs:
              cd tests
              npm run test
              
-#      - name: Get logs
-#        if: always()
-#        run: | 
-#             kubectl logs deployment/sl-boutique-frontend
+      - name: Get logs
+        if: always()
+        run: | 
+             kubectl logs deployment/sl-boutique-paymentservice
