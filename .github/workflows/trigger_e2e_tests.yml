@@ -26,9 +26,10 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
+          aws-access-key-id: ${{ secrets.AWS_US_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_US_SECRET_ACCESS_KEY }}
+          #aws-region: eu-west-1
+          aws-region: us-east-2
         
       - name: Login to Amazon ECR
         id: login-ecr
@@ -44,7 +45,8 @@ jobs:
           
       - name: Deploy services
         run: |
-          kubectl create secret docker-registry aws-secret --docker-server=159616352881.dkr.ecr.eu-west-1.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password)          
+          #kubectl create secret docker-registry aws-secret --docker-server=159616352881.dkr.ecr.eu-west-1.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password)
+          kubectl create secret docker-registry aws-secret --docker-server=474620256508.dkr.ecr.us-east-2.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password)
           kubectl apply -R -f ./k3s/                      
           
       - name: Wait for fetching containers
