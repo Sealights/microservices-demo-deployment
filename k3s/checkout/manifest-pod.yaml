@@ -17,7 +17,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-checkoutservice:v1.0.42
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-checkoutservice:v1.0.44
           name: checkoutservice
           imagePullPolicy: Always
           resources: {}
@@ -45,4 +45,4 @@ spec:
             - name: PAYMENT_SERVICE_ADDR
               value: "sl-boutique-paymentservice:50051"
             - name: VERSION
-              value: "v1.0.42"
+              value: "v1.0.44"
