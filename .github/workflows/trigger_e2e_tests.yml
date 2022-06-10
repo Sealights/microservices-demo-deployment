@@ -45,7 +45,6 @@ jobs:
           
       - name: Deploy services
         run: |
-          #kubectl create secret docker-registry aws-secret --docker-server=159616352881.dkr.ecr.eu-west-1.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password)
           kubectl create secret docker-registry aws-secret --docker-server=474620256508.dkr.ecr.us-east-2.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password)
           kubectl apply -R -f ./k3s/                      
           
@@ -99,4 +98,4 @@ jobs:
       - name: Get logs
         if: always()
         run: | 
-             kubectl logs deployment/sl-boutique-emailservice
+             kubectl logs deployment/sl-boutique-cartservice
