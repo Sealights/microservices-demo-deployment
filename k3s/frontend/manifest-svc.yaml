@@ -9,8 +9,8 @@ metadata:
 spec:
   ports:
     - name: c-http
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
       protocol: TCP
   selector:
     app.kubernetes.io/name: sl-boutique-frontend
