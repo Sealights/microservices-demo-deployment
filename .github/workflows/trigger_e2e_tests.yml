@@ -93,7 +93,9 @@ jobs:
              kubectl get pods
                                      
              cd tests
-             npm run test
+             #npm run test
+             
+             slnodejs mocha --token $TOKEN --labid integ_master_test --failbuild true --teststage "E2E Tests" --useslnode2 -- --recursive mocha/
              
       - name: Get logs
         if: always()
