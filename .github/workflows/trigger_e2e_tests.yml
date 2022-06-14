@@ -107,12 +107,19 @@ jobs:
                                      
              cd tests
              #npm run test
-            
+             echo "MAIN: "
+             la -la
              cd node_modules
-             
+             echo "NODE MODULES"
+             ls -la
              slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/
              
-      - name: Get logs
-        if: always()
-        run: | 
-             kubectl logs deployment/sl-boutique-cartservice
+      - name: Merge PR
+        uses: ridedott/merge-me-action@v2
+        with:
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          
+      #- name: Get logs
+      #  if: always()
+      #  run: | 
+      #       kubectl logs deployment/sl-boutique-cartservice
