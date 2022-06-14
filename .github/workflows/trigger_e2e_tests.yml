@@ -12,6 +12,8 @@ env:
   #K3S_MAX_RETRY_COUNT: ${{ secrets.K3S_MAX_RETRY_COUNT }}
   K3S_MAX_RETRY_COUNT: 10
   SLEEP_DURATION: 10
+  INTEGRATION_LAB_ID: "integ_master_813e_SLBoutique"
+  BUILD_ID : build-${{ github.run_id }}-${{ github.run_attempt }}
   
 jobs:
   trigger_e2e_tests:
@@ -82,8 +84,17 @@ jobs:
              export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)             
              ping $BOUTIQUE_FRONTEND_IP -c 5
                
+      - name: Report build number
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://dev-risk-management.dev.sealights.co/sl-api/v1/agent-apis/lab-ids/$INTEGRATION_LAB_ID/integration-build'
+          method: 'POST'
+          customHeaders: '{"Content-Type": "application/json", "Authorization": "Bearer ${{ secrets.RM_DEV_SL_TOKEN }}"}'
+          data: '{"buildName": "$BUILD_ID"}'
+                   
       - name: Run e2e tests     
         run: |
+             echo "Build id: $BUILD_ID"
              export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)                          
              echo "TEST: $BOUTIQUE_FRONTEND_IP"
              export TEST_ENDPOINT=http://$BOUTIQUE_FRONTEND_IP:8080
