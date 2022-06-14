@@ -107,6 +107,7 @@ jobs:
                                      
              cd tests
              #npm run test
+             ls -la
              slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/
              
       - name: Get logs
