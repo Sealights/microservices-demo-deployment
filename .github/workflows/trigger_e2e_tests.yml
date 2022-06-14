@@ -83,6 +83,8 @@ jobs:
         run: |
              export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)             
              ping $BOUTIQUE_FRONTEND_IP -c 5
+             echo "Bearer ${{ secrets.RM_DEV_SL_TOKEN }}"
+             echo "https://dev-risk-management.dev.sealights.co/sl-api/v1/agent-apis/lab-ids/$INTEGRATION_LAB_ID/integration-build"
                
       - name: Report build number
         uses: fjogeleit/http-request-action@v1
