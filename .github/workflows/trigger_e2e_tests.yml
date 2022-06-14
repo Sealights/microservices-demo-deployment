@@ -82,7 +82,7 @@ jobs:
              export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)             
              ping $BOUTIQUE_FRONTEND_IP -c 5
                
-      - name: Run e2e tests     
+      - name: Run e2e tests
         run: |
              export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)                          
              echo "TEST: $BOUTIQUE_FRONTEND_IP"
