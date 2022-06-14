@@ -107,12 +107,12 @@ jobs:
                                      
              cd tests
              #npm run test
-             echo "MAIN: "
-             ls -la
+             #echo "MAIN: "
+             #ls -la
              cd node_modules
-             echo "NODE MODULES"
-             ls -la
-             slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/
+             #echo "NODE MODULES"
+             #ls -la
+             ./slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/
              
       - name: Merge PR
         uses: ridedott/merge-me-action@v2
