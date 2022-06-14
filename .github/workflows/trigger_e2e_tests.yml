@@ -21,6 +21,14 @@ jobs:
   trigger_e2e_tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Report build number  
+        uses: satak/webrequest-action@master
+        with:
+          url: ${{ env.SL_LAB_URI }}
+          method: POST
+          payload: '{"buildName": "${{ env.BUILD_ID }}"}'
+          headers: '{"Content-Type": "application/json", "Authorization": "Bearer ${{ env.SL_LAB_API_TOKEN }}"}' 
+          
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -92,7 +100,7 @@ jobs:
           url: ${{ env.SL_LAB_URI }}
           method: POST
           payload: '{"buildName": "${{ env.BUILD_ID }}"}'
-          headers: '{"Content-Type": "application/json", "Authorization": "Bearer ${{ env.SL_API_TOKEN }}"}'               
+          headers: '{"Content-Type": "application/json", "Authorization": "Bearer ${{ env.SL_LAB_API_TOKEN }}"}'               
                    
       - name: Run e2e tests     
         run: |
