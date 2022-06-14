@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-currencyservice:v0.0.7
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-currencyservice:v0.0.9
           name: currency
           imagePullPolicy: Always
           resources: {}
