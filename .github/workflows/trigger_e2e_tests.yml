@@ -110,7 +110,7 @@ jobs:
              #echo "MAIN: "
              #ls -la
              cd node_modules
-             cd slnodejs
+             cd .bin
              ls -la
              #echo "NODE MODULES"
              #ls -la
