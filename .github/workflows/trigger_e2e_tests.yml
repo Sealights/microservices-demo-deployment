@@ -108,7 +108,7 @@ jobs:
              cd tests
              #npm run test
              echo "MAIN: "
-             la -la
+             ls -la
              cd node_modules
              echo "NODE MODULES"
              ls -la
