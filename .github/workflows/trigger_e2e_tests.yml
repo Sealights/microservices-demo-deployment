@@ -117,9 +117,24 @@ jobs:
              ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/
              
       - name: Merge PR
-        uses: ridedott/merge-me-action@v2
+        uses: "actions/github-script@v5"
         with:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          github-token: "${{ secrets.GH_PAT }}"
+          script: |
+            const pullRequest = context.payload.workflow_run.pull_requests[0]
+            const repository = context.repo
+
+            await github.rest.pulls.merge({
+              merge_method: "merge",
+              owner: repository.owner,
+              pull_number: pullRequest.number,
+              repo: repository.repo,
+            })
+            
+      #- name: Merge PR
+      #  uses: ridedott/merge-me-action@v2
+      #  with:
+      #    GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           
       #- name: Get logs
       #  if: always()
