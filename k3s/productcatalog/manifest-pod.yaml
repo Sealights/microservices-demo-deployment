@@ -47,3 +47,5 @@ spec:
               value: "grpc"
             - name: OTEL_AGENT_COLLECTOR_PORT
               value: "443"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.name=productcatalogservice,service.version=1.0.0"
