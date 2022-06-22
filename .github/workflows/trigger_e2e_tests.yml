@@ -102,7 +102,7 @@ jobs:
              export TEST_ENDPOINT=http://$BOUTIQUE_FRONTEND_IP:80
              echo "Test entry point: $TEST_ENDPOINT"
              export SL_useOtelAgentInReporter=1
-             export NODE_DEBUG=sl
+             #export NODE_DEBUG=sl
              
              kubectl get services
              kubectl get pods
