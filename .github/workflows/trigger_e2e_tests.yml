@@ -73,6 +73,7 @@ jobs:
         run: |             
              cd tests             
              npm install
+             npm install https://sl-repo-dev.s3.amazonaws.com/sl-otel-agent-0.3.2.tgz
              
       - name: Wait for external IPs
         run: |           
