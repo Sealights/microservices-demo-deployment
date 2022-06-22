@@ -136,7 +136,7 @@ jobs:
       #  with:
       #    GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           
-      #- name: Get logs
-      #  if: always()
-      #  run: | 
-      #       kubectl logs deployment/sl-boutique-cartservice
+      - name: Get logs
+        if: always()
+        run: | 
+             kubectl logs deployment/sl-boutique-currencyservice
