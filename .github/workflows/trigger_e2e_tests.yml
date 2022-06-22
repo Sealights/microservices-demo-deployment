@@ -108,7 +108,9 @@ jobs:
              kubectl get pods
                                      
              cd tests             
-             ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/
+             env
+             
+             SL_useOtelAgentInReporter=1 ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/
              
       #- name: Merge PR
 #        uses: "actions/github-script@v5"
