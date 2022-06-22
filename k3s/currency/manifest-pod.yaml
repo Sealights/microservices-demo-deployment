@@ -25,6 +25,8 @@ spec:
               containerPort: 7000
               protocol: TCP
           env:
+            - name: SL_useOtelAgent
+              value: "true"
             - name: SHIPPING_SERVICE_ADDR
               value: "sl-boutique-shippingservice:50051"
             - name: PRODUCT_CATALOG_SERVICE_ADDR
