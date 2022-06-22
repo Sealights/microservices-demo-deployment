@@ -134,4 +134,4 @@ jobs:
       - name: Get logs
         if: always()
         run: | 
-             kubectl logs deployment/sl-boutique-currencyservice
+             kubectl logs deployment/sl-boutique-paymentservice
