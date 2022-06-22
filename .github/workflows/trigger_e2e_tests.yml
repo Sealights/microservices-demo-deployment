@@ -103,6 +103,7 @@ jobs:
              echo "Test entry point: $TEST_ENDPOINT"
              export SL_useOtelAgentInReporter=1
              export SL_useOtelAgent=1
+             export NODE_DEBUG=sl
              
              kubectl get services
              kubectl get pods
