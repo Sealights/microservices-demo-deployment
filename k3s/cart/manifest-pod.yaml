@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-cartservice:v0.0.28
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-cartservice:v0.0.31-pepem54-patch-7.0
           name: sl-boutique-cartservice
           imagePullPolicy: Always
           resources: {}
@@ -48,4 +48,4 @@ spec:
             - name: OTEL_AGENT_COLLECTOR_PORT
               value: "443"
             - name: OTEL_RESOURCE_ATTRIBUTES
-              value: "service.name=shippingservice,service.version=1.0.0"              
+              value: "service.name=shippingservice,service.version=1.0.0"
