@@ -43,3 +43,9 @@ spec:
               value: "sl-boutique-adservice:9555"
             - name: PAYMENT_SERVICE_ADDR
               value: "sl-boutique-paymentservice:50051"
+            - name: OTEL_AGENT_COLLECTOR_PROTOCOL
+              value: "http"
+            - name: OTEL_AGENT_COLLECTOR_PORT
+              value: "443"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.name=shippingservice,service.version=1.0.0"              
