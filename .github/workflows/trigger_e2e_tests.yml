@@ -9,6 +9,9 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+  ECR_URL: ${{ secrets.ECR_URL }}
+  LOGZIO_TOKEN: ${{ secrets.LOGZIO_TOKEN }}
+  LOGZIO_LISTENER_ADDRESS: ${{ secrets.LOGZIO_LISTENER_ADDRESS }}
   #K3S_MAX_RETRY_COUNT: ${{ secrets.K3S_MAX_RETRY_COUNT }}
   K3S_MAX_RETRY_COUNT: 10
   SLEEP_DURATION: 10
@@ -49,7 +52,9 @@ jobs:
           
       - name: Deploy services
         run: |
-          kubectl create secret docker-registry aws-secret --docker-server=474620256508.dkr.ecr.us-east-2.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password)
+          kubectl create secret docker-registry aws-secret --docker-server=$ECR_URL --docker-username=AWS --docker-password=$(aws ecr get-login-password)
+          kubectl create secret generic logzio-logs-secret --from-literal=logzio-log-shipping-token=' $LOGZIO_TOKEN' --from-literal=logzio-log-listener='$$LOGZIO_LISTENER_ADDRESS' -n monitoring
+          kubectl apply -f https://raw.githubusercontent.com/logzio/logzio-k8s/master/logzio-daemonset.yaml -f https://raw.githubusercontent.com/logzio/logzio-k8s/master/configmap.yaml
           kubectl apply -R -f ./k3s/                      
           
       - name: Wait for fetching containers
