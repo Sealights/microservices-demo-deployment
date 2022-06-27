@@ -75,6 +75,9 @@ jobs:
              git clone https://$GITHUB_TOKEN@github.com/Sealights/microservices-demo-tests.git tests
              git remote set-url origin https://$GITHUB_TOKEN@github.com/Sealights/microservices-demo-tests.git
              
+      - name: List monitoring pods
+        run: kubectl get pods --namespace=monitoring
+        
       - name: Install testing tools     
         run: |             
              cd tests             
