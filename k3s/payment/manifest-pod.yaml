@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-paymentservice:v0.0.40
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-paymentservice:v0.0.42
           name: paymentservice
           imagePullPolicy: Always
           resources: {}
