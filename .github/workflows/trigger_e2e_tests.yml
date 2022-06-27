@@ -53,6 +53,7 @@ jobs:
       - name: Deploy services
         run: |
           kubectl create secret docker-registry aws-secret --docker-server=$ECR_URL --docker-username=AWS --docker-password=$(aws ecr get-login-password)
+          kubectl create namespace monitoring
           kubectl create secret generic logzio-logs-secret --from-literal=logzio-log-shipping-token=' $LOGZIO_TOKEN' --from-literal=logzio-log-listener='$$LOGZIO_LISTENER_ADDRESS' -n monitoring
           kubectl apply -f https://raw.githubusercontent.com/logzio/logzio-k8s/master/logzio-daemonset.yaml -f https://raw.githubusercontent.com/logzio/logzio-k8s/master/configmap.yaml
           kubectl apply -R -f ./k3s/                      
