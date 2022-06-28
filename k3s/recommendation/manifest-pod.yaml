@@ -45,8 +45,4 @@ spec:
               value: "sl-boutique-paymentservice:50051"
             - name: OTEL_RESOURCE_ATTRIBUTES
               value: "service.name=recommendationservice,service.version=1.0.0"
-            - name: OTEL_AGENT_COLLECTOR_PROTOCOL
-              value: "http"
-            - name: OTEL_AGENT_COLLECTOR_PORT
-              value: "443"
               
