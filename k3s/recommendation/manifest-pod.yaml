@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-recommendationservice:v0.0.5
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-recommendationservice:v0.0.27
           name: recommendationservice
           imagePullPolicy: Always
           resources: {}
@@ -49,4 +49,3 @@ spec:
               value: "http"
             - name: OTEL_AGENT_COLLECTOR_PORT
               value: "443"
-              
