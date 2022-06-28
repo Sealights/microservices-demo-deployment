@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-emailservice:v0.0.5
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-emailservice:v0.0.12
           name: b-emailservice
           imagePullPolicy: Always
           resources: {}
