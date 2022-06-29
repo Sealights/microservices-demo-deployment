@@ -1,12 +1,18 @@
 
 name: Merge pull request
 on:
-  repository_dispatch:
+  check_run:
+    types: [completed]
+    #repository_dispatch:
     #branches: [ master ]  
 jobs:
   merge_pull_request:
     runs-on: ubuntu-latest
     steps:         
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+      - name: Test
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}                   
+        run: |
+          echo "$GITHUB_CONTEXT"
+
  
