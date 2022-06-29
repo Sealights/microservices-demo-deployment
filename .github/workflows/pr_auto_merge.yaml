@@ -1,0 +1,12 @@
+
+name: Merge pull request
+on:
+  repository_dispatch:
+    #branches: [ master ]  
+jobs:
+  merge_pull_request:
+    runs-on: ubuntu-latest
+    steps:         
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+ 
