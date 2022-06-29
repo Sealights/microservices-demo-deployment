@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-cartservice:v0.0.31
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-cartservice:v0.0.35
           name: sl-boutique-cartservice
           imagePullPolicy: Always
           resources: {}
