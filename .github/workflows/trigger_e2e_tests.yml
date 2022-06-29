@@ -83,12 +83,9 @@ jobs:
       - name: List monitoring pods
         run: kubectl get pods --namespace=monitoring
         
-      - name: Install testing tools     
-        run: |          
-            #enter java-ish folder
-             cd tests             
-             #npm install
-             which java
+      #- name: Install testing tools     
+      #  run: |          
+      #      #enter java-ish folder
              
       - name: Wait for external IPs
         run: |           
