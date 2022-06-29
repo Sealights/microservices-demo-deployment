@@ -79,9 +79,11 @@ jobs:
         run: kubectl get pods --namespace=monitoring
         
       - name: Install testing tools     
-        run: |             
+        run: |          
+            #enter java-ish folder
              cd tests             
-             #npm install            
+             #npm install
+             which java
              
       - name: Wait for external IPs
         run: |           
@@ -117,8 +119,8 @@ jobs:
                                      
              cd tests             
              
-             ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/ --timeout=10000
-             sleep 20
+             #./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/ --timeout=10000
+             #sleep 20
              
       #- name: Merge PR
 #        uses: "actions/github-script@v5"
