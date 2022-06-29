@@ -29,7 +29,7 @@ jobs:
 
       - name: Trigger merge
         run: | 
-              curl -H "Accept: application/vnd.github.everest-preview+json" -H "Authorization: token $GITHUB_TOKEN" --request POST --data '{"event_type": "manual-trigger-mytest"}' https://github.com/Sealights/microservices-demo-deployment.git/dispatches
+              curl -H "Accept: application/vnd.github.everest-preview+json" -H "Authorization: token $GITHUB_TOKEN" --request POST --data '{"event_type": "manual-trigger-mytest"}' https://api.github.com/Sealights/microservices-demo-deployment.git/dispatches
               
               
       - name: Set up Docker Buildx
