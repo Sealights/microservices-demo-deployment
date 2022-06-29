@@ -81,7 +81,7 @@ jobs:
       - name: Install testing tools     
         run: |             
              cd tests             
-             npm install            
+             #npm install            
              
       - name: Wait for external IPs
         run: |           
