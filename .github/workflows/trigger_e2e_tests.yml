@@ -186,19 +186,20 @@ jobs:
             
              export PR_LINK="${{ github.event.pull_request._links.self.href }}"
              echo "PR link: $PR_LINK"
-             echo ${GH_TOKEN} >> token.txt
+             echo ${GH_TOKEN} >> gh-token.txt
              export GITHUB_TOKEN=
              export GH_TOKEN=
-             #gh auth login --with-token < token.txt
+             gh auth login --with-token < token.txt
              
              #git clone https://${GH_TOKEN}@github.com/Sealights/microservices-demo-deployment.git integration
              #cd integration
-             #git remote set-url origin https://${GH_TOKEN}@github.com/Sealights/microservices-demo-deployment.git
-                                       
-             #gh pr merge --merge "$PR_LINK"              
-              
-             curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${GH_TOKEN}" "$PR_LINK/merge"
-
+             #git remote set-url origin https://${GH_TOKEN}@github.com/Sealights/microservices-demo-deployment.git                                       
+             
+             gh pr merge --merge "$PR_LINK"                            
+             
+             #curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${GH_TOKEN}" "$PR_LINK/merge"
+ 
+             #gh api --method PUT -H "Accept: application/vnd.github.v3+json" /repos/OWNER/REPO/pulls/PULL_NUMBER/merge
           
         #- name: "Merge pull request"
 #          uses: "actions/github-script@v5"
