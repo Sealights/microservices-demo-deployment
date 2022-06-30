@@ -147,3 +147,14 @@ jobs:
         if: always()
         run: | 
              kubectl logs deployment/sl-boutique-paymentservice
+             
+  auto-merge-pull-request:
+      needs: trigger_e2e_tests
+      runs-on: ubuntu-latest
+
+      steps:     
+        - name: Test
+          env:
+            GITHUB_CONTEXT: ${{ toJson(github) }}                   
+          run: |
+            echo "$GITHUB_CONTEXT"
