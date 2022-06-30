@@ -180,9 +180,10 @@ jobs:
           
         - name: Merge pull request
           env:
-            PR_LINK: ${{ github.event.inputs.pull-request.self }} 
+            
             GH_TOKEN: ${{ secrets.GH_PAT }}
           run: |
+             export PR_LINK="${{ github.event.inputs.pull-request.self }}"
              echo "PR link: $PR_LINK"
              echo ${GH_TOKEN} >> token.txt
              export GITHUB_TOKEN=
