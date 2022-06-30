@@ -185,13 +185,13 @@ jobs:
             
              echo "Pull request number: $PR_NUMBER, event type: $EVENT_TYPE"
             
-             export PR_LINK="${{ github.event.pull_request._links.self }}"
+             export PR_LINK="${{ github.event.pull_request._links.self.href }}"
              echo "PR link: $PR_LINK"
              echo ${GH_TOKEN} >> token.txt
              export GITHUB_TOKEN=
              export GH_TOKEN=
              gh auth login --with-token < token.txt
-             #gh pr merge --merge "$PR_LINK"
+             gh pr merge --merge "$PR_LINK"
               
             #curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token <TOKEN>" "$PR_LINK/merge"
           
