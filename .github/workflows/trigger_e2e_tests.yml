@@ -157,4 +157,6 @@ jobs:
           env:
             GITHUB_CONTEXT: ${{ toJson(github) }}                   
           run: |
+            export PR_NUMBER="${{ github.event.number }}"
+            echo "Pull request number: $PR_NUMBER"
             echo "$GITHUB_CONTEXT"
