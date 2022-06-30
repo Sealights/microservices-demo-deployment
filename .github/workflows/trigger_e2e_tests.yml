@@ -185,7 +185,7 @@ jobs:
             
              echo "Pull request number: $PR_NUMBER, event type: $EVENT_TYPE"
             
-             export PR_LINK="${{ github.event.pull-request.self }}"
+             export PR_LINK="${{ github.event.pull_request.self }}"
              echo "PR link: $PR_LINK"
              echo ${GH_TOKEN} >> token.txt
              export GITHUB_TOKEN=
