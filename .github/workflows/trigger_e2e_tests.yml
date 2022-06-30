@@ -180,7 +180,8 @@ jobs:
           
         - name: Merge pull request
           env:
-            PR_LINK: ${{ github.event.inputs.pull-request.self }}                
+            PR_LINK: ${{ github.event.inputs.pull-request.self }} 
+            GH_TOKEN: ${{ secrets.GH_PAT }}
           run: |
              echo "PR link: $PR_LINK"
              echo ${GH_TOKEN} >> token.txt
@@ -190,6 +191,8 @@ jobs:
              #gh pr merge --merge "$PR_LINK"
               
             #curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token <TOKEN>" "$PR_LINK/merge"
+          
+
           
         #- name: "Merge pull request"
 #          uses: "actions/github-script@v5"
