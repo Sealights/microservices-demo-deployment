@@ -176,8 +176,7 @@ jobs:
 #            dry-run: true
           
         - name: Merge pull request
-          env:
-            
+          env:            
             GH_TOKEN: ${{ secrets.GH_PAT }}
           run: |
              export PR_NUMBER="${{ github.event.number }}"
@@ -190,16 +189,15 @@ jobs:
              echo ${GH_TOKEN} >> token.txt
              export GITHUB_TOKEN=
              export GH_TOKEN=
-             gh auth login --with-token < token.txt
+             #gh auth login --with-token < token.txt
              
-             git clone https://${GH_TOKEN}@github.com/Sealights/microservices-demo-deployment.git integration
-             cd integration
-             git remote set-url origin https://${GH_TOKEN}@github.com/Sealights/microservices-demo-deployment.git
+             #git clone https://${GH_TOKEN}@github.com/Sealights/microservices-demo-deployment.git integration
+             #cd integration
+             #git remote set-url origin https://${GH_TOKEN}@github.com/Sealights/microservices-demo-deployment.git
                                        
-             gh pr merge --merge "$PR_LINK"              
+             #gh pr merge --merge "$PR_LINK"              
               
-             #curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token <TOKEN>" "$PR_LINK/merge"
-          
+             curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${GH_TOKEN}" "$PR_LINK/merge"
 
           
         #- name: "Merge pull request"
