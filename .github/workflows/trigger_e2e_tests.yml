@@ -152,8 +152,8 @@ jobs:
       needs: trigger_e2e_tests
       runs-on: ubuntu-latest
 
-      if: >
-        github.event.workflow_run.event == 'pull_request'
+      #if: >
+      #  github.event.workflow_run.event == 'pull_request'
       
       steps:     
         - name: Test
