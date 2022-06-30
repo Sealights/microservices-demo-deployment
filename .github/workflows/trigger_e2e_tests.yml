@@ -187,7 +187,7 @@ jobs:
              export GITHUB_TOKEN=
              export GH_TOKEN=
              gh auth login --with-token < token.txt
-             gh pr merge "$PR_LINK"
+             gh pr merge --merge "$PR_LINK"
               
             #curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token <TOKEN>" "$PR_LINK/merge"
           
