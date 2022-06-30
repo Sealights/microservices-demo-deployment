@@ -153,20 +153,17 @@ jobs:
       runs-on: ubuntu-latest
 
       #if: >
-      #  github.event.workflow_run.event == 'pull_request'
+      #  github.event_name == 'pull_request'
       
       steps:     
         - name: Test
           env:
             GITHUB_CONTEXT: ${{ toJson(github) }}            
           run: |
-            export PR_NUMBER="${{ github.event.number }}"
-            export EVENT_TYPE="${{ github.event.workflow_run.event }}"
-            
-            echo "Pull request number: $PR_NUMBER, event type: $EVENT_TYPE"
+
             echo "$GITHUB_CONTEXT"
             
-            echo context.repo
+            #echo context.repo
 
 #        - name: "Merge pull request"
 #          uses: reitermarkus/automerge@v2
@@ -183,7 +180,12 @@ jobs:
             
             GH_TOKEN: ${{ secrets.GH_PAT }}
           run: |
-             export PR_LINK="${{ github.event.inputs.pull-request.self }}"
+             export PR_NUMBER="${{ github.event.number }}"
+             export EVENT_TYPE="${{ github.event_name }}"
+            
+             echo "Pull request number: $PR_NUMBER, event type: $EVENT_TYPE"
+            
+             export PR_LINK="${{ github.event.pull-request.self }}"
              echo "PR link: $PR_LINK"
              echo ${GH_TOKEN} >> token.txt
              export GITHUB_TOKEN=
