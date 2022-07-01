@@ -123,54 +123,17 @@ jobs:
       needs: trigger_e2e_tests
       runs-on: ubuntu-latest
       if: github.event_name == 'pull_request'      
-      steps:     
-        - name: Test
-          env:
-            GITHUB_CONTEXT: ${{ toJson(github) }}            
-          run: |
-
-            echo "$GITHUB_CONTEXT"
-            
-            #echo context.repo
-          
+      steps:         
         - name: Merge pull request
           env:            
             GH_TOKEN: ${{ secrets.GH_PAT }}
           run: |
              export PR_NUMBER="${{ github.event.number }}"
-             export EVENT_TYPE="${{ github.event_name }}"
-            
+             export EVENT_TYPE="${{ github.event_name }}"            
              echo "Pull request number: $PR_NUMBER, event type: $EVENT_TYPE"
             
              export PR_LINK="${{ github.event.pull_request._links.self.href }}"
              echo "PR link: $PR_LINK"
-             #echo ${GH_TOKEN} >> gh-token.txt
-             #export GITHUB_TOKEN=
-             #export GH_TOKEN=
              
-             curl -X PUT -i -H "Authorization: token ${GH_TOKEN}"  "${PR_LINK}/merge"
-             
-             #gh auth login --with-token < gh-token.txt             
-             #git clone https://${GH_TOKEN}@github.com/Sealights/microservices-demo-deployment.git integration
-             #cd integration
-             #git remote set-url origin https://${GH_TOKEN}@github.com/Sealights/microservices-demo-deployment.git                                                    
-             #gh pr merge --merge "$PR_LINK"                                         
-             #curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${GH_TOKEN}" "$PR_LINK/merge"
-             #gh api --method PUT -H "Accept: application/vnd.github.v3+json" /repos/OWNER/REPO/pulls/PULL_NUMBER/merge
+             curl -X PUT -i -H "Authorization: token ${GH_TOKEN}"  "${PR_LINK}/merge"             
           
-        #- name: "Merge pull request"
-#          uses: "actions/github-script@v5"
-#          with:
-#            github-token: "${{ secrets.GH_PAT }}"            
-#            script: |
-#              #const pullRequest = context.payload.workflow_run.pull_requests[0]
-#              const repository = context.repo
-#              const { owner, repo } = context.repo
-#              console.log(`The owner of ${repo} is ${owner}`)
-              
-#              await github.rest.pulls.merge({
-#                merge_method: "merge",
-#                owner: repository.owner,
-#                pull_number: "${{ github.event.number }}",
-#                repo: repository.repo,
- #             })
