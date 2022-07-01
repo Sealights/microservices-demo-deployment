@@ -26,11 +26,7 @@ jobs:
     steps:         
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-
-      - name: Trigger merge
-        run: | 
-              curl -H "Accept: application/vnd.github.everest-preview+json" -H "Authorization: token $GITHUB_TOKEN" --request POST --data '{"event_type": "manual-trigger-mytest", "client_payload": { "myKey": "myValue" } }' https://api.github.com/Sealights/microservices-demo-deployment/dispatches 
-                            
+             
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
                 
@@ -143,10 +139,10 @@ jobs:
       #  with:
       #    GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           
-      - name: Get logs
-        if: always()
-        run: | 
-             kubectl logs deployment/sl-boutique-paymentservice
+      #- name: Get logs
+      #  if: always()
+      #  run: | 
+      #       kubectl logs deployment/sl-boutique-paymentservice
              
   auto-merge-pull-request:
       needs: trigger_e2e_tests
@@ -164,16 +160,6 @@ jobs:
             echo "$GITHUB_CONTEXT"
             
             #echo context.repo
-
-#        - name: "Merge pull request"
-#          uses: reitermarkus/automerge@v2
-#          with:
-#            token: ${{ secrets.MY_GITHUB_TOKEN }}
-#            merge-method: rebase
-#            do-not-merge-labels: never-merge
-#            required-labels: automerge
-#            pull-request: ${{ github.event.inputs.pull-request }}
-#            dry-run: true
           
         - name: Merge pull request
           env:            
@@ -186,9 +172,9 @@ jobs:
             
              export PR_LINK="${{ github.event.pull_request._links.self.href }}"
              echo "PR link: $PR_LINK"
-             echo ${GH_TOKEN} >> gh-token.txt
-             export GITHUB_TOKEN=
-             export GH_TOKEN=
+             #echo ${GH_TOKEN} >> gh-token.txt
+             #export GITHUB_TOKEN=
+             #export GH_TOKEN=
              
              curl -X PUT -i -H "Authorization: token ${GH_TOKEN}"  "${PR_LINK}/merge"
              
