@@ -150,5 +150,5 @@ jobs:
              export PR_LINK="${{ github.event.pull_request._links.self.href }}"
              echo "PR link: $PR_LINK"
              
-             curl -X PUT -i -H "Authorization: token ${GH_TOKEN}"  "${PR_LINK}/merge"             
+             #curl -X PUT -i -H "Authorization: token ${GH_TOKEN}"  "${PR_LINK}/merge"             
           
