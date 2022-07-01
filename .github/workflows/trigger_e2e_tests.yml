@@ -116,9 +116,7 @@ jobs:
                                      
              cd tests             
              
-             ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/ --timeout=10000
-             
-             non exesting command
+             ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/ --timeout=10000                        
                          
   auto-merge-pull-request:
       needs: trigger_e2e_tests
