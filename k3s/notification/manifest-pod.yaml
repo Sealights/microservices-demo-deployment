@@ -21,7 +21,7 @@ spec:
           imagePullPolicy: Always
           resources: {}
           ports:
-            - name: b-notificationsender
+            - name: sl-sender
               containerPort: 7080
               protocol: TCP
           env:
