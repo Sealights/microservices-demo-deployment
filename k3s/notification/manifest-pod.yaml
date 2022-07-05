@@ -57,3 +57,13 @@ spec:
               value: "2"
             - name: SQS_MAX_MESSAGES
               value: "1"
+            - name: AWS_US_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aws-settings-access-key
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_US_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws-settings-secret
+                  key: AWS_SECRET                  
