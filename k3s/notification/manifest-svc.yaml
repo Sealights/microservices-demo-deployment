@@ -1,0 +1,13 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: sl-boutique-notificationsender
+spec:
+  ports:
+    - name: sl-boutique-notificationsender
+      port: 7080
+      targetPort: 7080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: sl-boutique-notificationsender
+  type: ClusterIP
