@@ -49,3 +49,13 @@ spec:
               value: "https://sqs.us-east-2.amazonaws.com/474620256508/EmailQueue"
             - name: AWS_REGION
               value: "us-east-2"
+            - name: AWS_US_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aws-settings-access-key
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_US_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws-settings-secret
+                  key: AWS_SECRET
