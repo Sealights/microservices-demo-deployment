@@ -116,7 +116,7 @@ jobs:
                                      
              cd tests             
              
-             ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tets" --useslnode2 -- --recursive mocha/ --timeout=10000                        
+             ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tests" --useslnode2 -- --recursive mocha/ --timeout=10000                        
       - name: Run java e2e tests
         run: |
              echo "Build id: $BUILD_ID"
