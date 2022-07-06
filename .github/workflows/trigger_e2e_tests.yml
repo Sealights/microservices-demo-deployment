@@ -56,8 +56,8 @@ jobs:
           AWS_SECRET: ${{ secrets.AWS_US_SECRET_ACCESS_KEY }}
         run: |
           kubectl create secret docker-registry aws-secret --docker-server=$ECR_URL --docker-username=AWS --docker-password=$(aws ecr get-login-password)
-          kubectl create secret generic aws-settings-access-key --from-literal=AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
-          kubectl create secret generic aws-settings-secret --from-literal=AWS_SECRET="$AWS_SECRET"
+          kubectl create secret generic aws-settings-access-key --from-literal=AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+          kubectl create secret generic aws-settings-secret --from-literal=AWS_SECRET=$AWS_SECRET
           
           kubectl create namespace monitoring
           kubectl create secret generic logzio-logs-secret --from-literal=logzio-log-shipping-token=$LOGZIO_TOKEN --from-literal=logzio-log-listener=$LOGZIO_LISTENER_ADDRESS -n monitoring
