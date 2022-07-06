@@ -48,7 +48,7 @@ spec:
             - name: OTEL_AGENT_COLLECTOR_PORT
               value: "443"
             - name: OTEL_RESOURCE_ATTRIBUTES
-              value: "service.name=cartservice,service.version=1.0.0"
+              value: "service.name=notificaitonsender,service.version=1.0.0"
             - name: AWS_SQS_QUEUE_URL
               value: "https://sqs.us-east-2.amazonaws.com/474620256508/EmailQueue"
             - name: AWS_REGION
