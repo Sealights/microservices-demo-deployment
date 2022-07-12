@@ -54,9 +54,9 @@ spec:
             - name: AWS_REGION
               value: "us-east-2"
             - name: SQS_WAIT_TIME_SEC
-              value: "2"
+              value: "20"
             - name: SQS_MAX_MESSAGES
-              value: "1"
+              value: "5"
             - name: AWS_US_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
