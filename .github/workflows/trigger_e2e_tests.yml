@@ -123,6 +123,23 @@ jobs:
              cd tests             
              
              ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tests" --useslnode2 -- --recursive mocha/ --timeout=10000                        
+      
+      - name: Second Run e2e tests     
+        run: |
+             echo "Build id: $BUILD_ID"
+             export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)                          
+             echo "TEST: $BOUTIQUE_FRONTEND_IP"
+             export TEST_ENDPOINT=http://$BOUTIQUE_FRONTEND_IP:80
+             echo "Test entry point: $TEST_ENDPOINT"
+             
+             kubectl get services
+             kubectl get pods
+                                     
+             cd tests             
+             
+             ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tests" --useslnode2 -- --recursive mocha/ --timeout=10000                        
+     
+      
       - name: Run java e2e tests
         run: |
              echo "Build id: $BUILD_ID"
