@@ -107,7 +107,10 @@ jobs:
           url: ${{ env.SL_LAB_URI }}
           method: POST
           payload: '{"buildName": "${{ env.BUILD_ID }}"}'
-          headers: '{"Content-Type": "application/json", "Authorization": "Bearer ${{ env.SL_LAB_API_TOKEN }}"}'                
+          headers: '{"Content-Type": "application/json", "Authorization": "Bearer ${{ env.SL_LAB_API_TOKEN }}"}'  
+          
+      - name: Waitng before E2E
+        run: sleep $SLEEP_DURATION
                    
       - name: Run e2e tests     
         run: |
