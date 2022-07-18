@@ -24,7 +24,7 @@ spec:
             - name: c-http
               containerPort: 50051
               protocol: TCP
-            - name: c-http
+            - name: d-http
               containerPort: 50052
               protocol: TCP
           env:
