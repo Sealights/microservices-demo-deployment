@@ -8,6 +8,10 @@ spec:
       port: 50051
       targetPort: 50051
       protocol: TCP
+    - name: d-http
+      port: 50052
+      targetPort: 50052
+      protocol: TCP
   selector:
     app.kubernetes.io/name: sl-boutique-shippingservice
   type: ClusterIP
