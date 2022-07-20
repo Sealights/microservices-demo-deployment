@@ -52,3 +52,5 @@ spec:
               value: "service.name=checkoutservice,service.version=1.0.0"
             - name: VERSION
               value: "v1.0.117"
+            - name: SHIPPING_SERVICE_HTTP_ADDR
+              value: "sl-boutique-shippingservice:50052"
