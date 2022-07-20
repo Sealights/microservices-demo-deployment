@@ -17,7 +17,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-checkoutservice:v1.0.117
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-checkoutservice:v1.0.119
           name: checkoutservice
           imagePullPolicy: Always
           resources: {}
@@ -51,6 +51,6 @@ spec:
             - name: OTEL_RESOURCE_ATTRIBUTES
               value: "service.name=checkoutservice,service.version=1.0.0"
             - name: VERSION
-              value: "v1.0.117"
+              value: "v1.0.119"
             - name: SHIPPING_SERVICE_HTTP_ADDR
               value: "sl-boutique-shippingservice:50052"
