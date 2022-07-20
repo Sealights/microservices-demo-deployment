@@ -53,4 +53,4 @@ spec:
             - name: VERSION
               value: "v1.0.117"
             - name: SHIPPING_SERVICE_HTTP_ADDR
-              value: "http://sl-boutique-shippingservice:50052"
+              value: "sl-boutique-shippingservice:50052"
