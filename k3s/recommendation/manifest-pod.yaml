@@ -53,6 +53,8 @@ spec:
               value: "20"
             - name: SQS_MAX_MESSAGES
               value: "1"
+            - name: QUEUE_LOOP_QUANTITY
+              value: "1"
             - name: AWS_US_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
