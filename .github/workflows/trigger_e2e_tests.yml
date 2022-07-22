@@ -124,22 +124,22 @@ jobs:
              
              ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tests" --useslnode2 -- --recursive mocha/ --timeout=10000                        
       
-#      - name: Run java e2e tests
-#        run: |
-#             echo "Build id: $BUILD_ID"
-#             export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)
-#             echo "TEST: $BOUTIQUE_FRONTEND_IP"
-#             export TEST_ENDPOINT=http://$BOUTIQUE_FRONTEND_IP:80
-#             echo "Test entry point: $TEST_ENDPOINT"
-#
-#             kubectl get services
-#             kubectl get pods
+      - name: Run java e2e tests
+        run: |
+             echo "Build id: $BUILD_ID"
+             export BOUTIQUE_FRONTEND_IP=$(cat test-entrypoint.txt)
+             echo "TEST: $BOUTIQUE_FRONTEND_IP"
+             export TEST_ENDPOINT=http://$BOUTIQUE_FRONTEND_IP:80
+             echo "Test entry point: $TEST_ENDPOINT"
 
-#             cd tests
-#             cd java
-#             echo "$SL_LAB_API_TOKEN" > sltoken.txt
-#             ./mvnw -Psl -q dependency:go-offline -DexcludeGroupIds=io.sealights.demo
-#             ./mvnw -B -Psl install -Dmaven.test.failure.ignore=true -Dsl.testStage="java E2E Tests" -Dsl.labId=${SL_LAB_ID} -Dsl.buildName=${BUILD_ID} -Dsl.runTestOnly=false
+             kubectl get services
+             kubectl get pods
+
+             cd tests
+             cd java
+             echo "$SL_LAB_API_TOKEN" > sltoken.txt
+             ./mvnw -Psl -q dependency:go-offline -DexcludeGroupIds=io.sealights.demo
+             ./mvnw -B -Psl install -Dmaven.test.failure.ignore=true -Dsl.testStage="java E2E Tests" -Dsl.labId=${SL_LAB_ID} -Dsl.buildName=${BUILD_ID} -Dsl.runTestOnly=false
                          
   auto-merge-pull-request:
       needs: trigger_e2e_tests
