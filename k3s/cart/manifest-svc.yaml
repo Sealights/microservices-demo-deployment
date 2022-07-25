@@ -8,7 +8,7 @@ spec:
       port: 7070
       targetPort: 7070
       protocol: TCP
-    - name: sl-boutique-cartservice-http
+    - name: b-cart-http
       port: 7072
       targetPort: 7072
       protocol: TCP
