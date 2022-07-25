@@ -24,6 +24,9 @@ spec:
             - name: b-cartservice
               containerPort: 7070
               protocol: TCP
+            - name: b-cartservice-http
+              containerPort: 7072
+              protocol: TCP
           env:
             - name: SHIPPING_SERVICE_ADDR
               value: "sl-boutique-shippingservice:50051"
