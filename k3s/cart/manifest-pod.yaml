@@ -52,3 +52,7 @@ spec:
               value: "443"
             - name: OTEL_RESOURCE_ATTRIBUTES
               value: "service.name=cartservice,service.version=1.0.0"
+            - name: PORT
+              value: "7070"
+            - name: HTTP_PORT
+              value: "7072"
