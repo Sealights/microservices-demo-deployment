@@ -24,7 +24,7 @@ spec:
             - name: b-cartservice
               containerPort: 7070
               protocol: TCP
-            - name: b-cartservice-http
+            - name: b-cart-http
               containerPort: 7072
               protocol: TCP
           env:
