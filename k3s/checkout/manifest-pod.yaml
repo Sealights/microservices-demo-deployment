@@ -56,3 +56,5 @@ spec:
               value: "true"
             - name: SHIPPING_SERVICE_HTTP_ADDR
               value: "sl-boutique-shippingservice:50052"
+            - name: CART_SERVICE_HTTP_ADDR
+              value: "sl-boutique-cartservice:7072"
