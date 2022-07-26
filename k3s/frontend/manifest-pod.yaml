@@ -39,8 +39,6 @@ spec:
               value: "sl-boutique-emailservice:8080"
             - name: CHECKOUT_SERVICE_ADDR
               value: "sl-boutique-checkoutservice:5050"
-            - name: AD_SERVICE_ADDR
-              value: "sl-boutique-adservice:9555"
             - name: PAYMENT_SERVICE_ADDR
               value: "sl-boutique-paymentservice:50051"
             - name: OTEL_AGENT_COLLECTOR_PROTOCOL
@@ -49,6 +47,8 @@ spec:
               value: "443"
             - name: OTEL_RESOURCE_ATTRIBUTES
               value: "service.name=frontend,service.version=1.0.0"
+            - name: AD_SERVICE_ADDR
+              value: "sl-boutique-adservice:9555"
             - name: AD_SERVICE_ADDR_HTTP
               value: "sl-boutique-adservice:9556"
             - name: HTTP_TRAFFIC
