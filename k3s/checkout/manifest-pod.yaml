@@ -53,7 +53,7 @@ spec:
             - name: VERSION
               value: "v1.0.123"
             - name: HTTP_TRAFFIC
-              value: "true"
+              value: "false"
             - name: SHIPPING_SERVICE_HTTP_ADDR
               value: "sl-boutique-shippingservice:50052"
             - name: CART_SERVICE_HTTP_ADDR
