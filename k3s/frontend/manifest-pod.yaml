@@ -49,3 +49,7 @@ spec:
               value: "443"
             - name: OTEL_RESOURCE_ATTRIBUTES
               value: "service.name=frontend,service.version=1.0.0"
+            - name: AD_SERVICE_ADDR
+              value: "sl-boutique-adservice:9556"
+            - name: HTTP_TRAFFIC
+              value: "true"
