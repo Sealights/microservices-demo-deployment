@@ -52,4 +52,4 @@ spec:
             - name: AD_SERVICE_ADDR_HTTP
               value: "sl-boutique-adservice:9556"
             - name: HTTP_TRAFFIC
-              value: "true"
+              value: "false"
