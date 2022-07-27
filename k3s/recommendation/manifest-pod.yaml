@@ -24,6 +24,9 @@ spec:
             - name: c-http
               containerPort: 8080
               protocol: TCP
+            - name: d-http
+              containerPort: 8082
+              protocol: TCP
           env:
             - name: SHIPPING_SERVICE_ADDR
               value: "sl-boutique-shippingservice:50051"
@@ -65,3 +68,5 @@ spec:
                 secretKeyRef:
                   name: aws-settings-secret
                   key: AWS_SECRET
+            - name: HTTP_PORT
+              value: "8082"
