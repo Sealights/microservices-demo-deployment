@@ -12,6 +12,10 @@ spec:
       port: 8080
       targetPort: 8080
       protocol: TCP
+    - name: d-http
+      port: 8082
+      targetPort: 8082
+      protocol: TCP
   selector:
     app.kubernetes.io/name: sl-boutique-recommendationservice
   type: ClusterIP
