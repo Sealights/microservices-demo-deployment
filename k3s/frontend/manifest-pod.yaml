@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-frontend:v0.0.42
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-frontend:v0.0.48
           name: frontend
           imagePullPolicy: Always
           resources: {}
@@ -52,6 +52,6 @@ spec:
             - name: AD_SERVICE_ADDR_HTTP
               value: "sl-boutique-adservice:9556"
             - name: AD_SERVICE_RECOMMENDATION_HTTP
-              value: "sl-boutique-recommendationservice:8082"          
+              value: "sl-boutique-recommendationservice:8082"
             - name: HTTP_TRAFFIC
               value: "true"
