@@ -70,3 +70,5 @@ spec:
                   key: AWS_SECRET
             - name: HTTP_PORT
               value: "8082"
+            - name: PRODUCT_CATALOG_SERVICE_ADDR_HTTP
+              value: "sl-boutique-productcatalog:3552"
