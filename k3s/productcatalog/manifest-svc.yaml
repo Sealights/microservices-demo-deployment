@@ -12,6 +12,10 @@ spec:
       port: 3550
       targetPort: 3550
       protocol: TCP
+    - name: d-http
+      port: 3552
+      targetPort: 3552
+      protocol: TCP
   selector:
     app.kubernetes.io/name: sl-boutique-productcatalog
   type: ClusterIP
