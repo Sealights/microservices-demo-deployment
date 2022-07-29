@@ -24,6 +24,9 @@ spec:
             - name: c-http
               containerPort: 3550
               protocol: TCP
+            - name: d-http
+              containerPort: 3552
+              protocol: TCP
           env:
             - name: SHIPPING_SERVICE_ADDR
               value: "sl-boutique-shippingservice:50051"
@@ -49,3 +52,5 @@ spec:
               value: "443"
             - name: OTEL_RESOURCE_ATTRIBUTES
               value: "service.name=productcatalogservice,service.version=1.0.0"
+            - name: HTTP_PORT
+              value: "3552"
