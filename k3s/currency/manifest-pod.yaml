@@ -24,6 +24,9 @@ spec:
             - name: c-http
               containerPort: 7000
               protocol: TCP
+            - name: d-http
+              containerPort: 7001
+              protocol: TCP
           env:
             - name: SHIPPING_SERVICE_ADDR
               value: "sl-boutique-shippingservice:50051"
