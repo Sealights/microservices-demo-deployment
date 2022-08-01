@@ -12,6 +12,10 @@ spec:
       port: 7000
       targetPort: 7000
       protocol: TCP
+    - name: d-http
+      port: 7001
+      targetPort: 7001
+      protocol: TCP
   selector:
     app.kubernetes.io/name: sl-boutique-currencyservice
   type: ClusterIP
