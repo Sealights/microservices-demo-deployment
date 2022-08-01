@@ -60,3 +60,5 @@ spec:
               value: "sl-boutique-cartservice:7072"
             - name: PAYMENT_SERVICE_ADDR_HTTP
               value: "sl-boutique-paymentservice:7001"
+            - name: CURRENCY_SERVICE_ADDR_HTTP
+              value: "sl-boutique-currencyservice:7001"
