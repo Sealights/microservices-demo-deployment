@@ -19,7 +19,7 @@ env:
   SL_LAB_ID: "integ_master_813e_SLBoutique"
   SL_LAB_API_TOKEN: ${{ secrets.RM_DEV_SL_TOKEN }}  
   #SL_LAB_URI: https://dev-risk-management.dev.sealights.co/sl-api/v1/agent-apis/lab-ids/integ_master_813e_SLBoutique/integration-build
-  SL_LAB_URI: https://dev-risk-management2.dev.sealights.co/sl-api/v1/agent-apis/lab-ids/integ_master_813e_SLBoutique/integration-build
+  SL_LAB_URI: https://dev-risk-mgmt2.dev.sealights.co/sl-api/v1/agent-apis/lab-ids/integ_master_813e_SLBoutique/integration-build
   
 jobs:
   trigger_e2e_tests:
