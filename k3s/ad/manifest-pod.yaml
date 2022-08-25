@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: aws-secret
       containers:
-        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-adservice:v0.0.64
+        - image: 474620256508.dkr.ecr.us-east-2.amazonaws.com/microservices-demo-adservice:v0.0.78
           name: adservice
           imagePullPolicy: Always
           resources: {}
