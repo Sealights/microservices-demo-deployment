@@ -123,7 +123,7 @@ jobs:
                                      
              cd tests             
              
-             SL_OTelAgentUseLogs=1 ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tests" --useslnode2 -- --recursive mocha/ --timeout=10000                        
+             SL_OTelAgentUseLogs=1 SL_useOtelAgent=true ./node_modules/.bin/slnodejs mocha --token $SL_LAB_API_TOKEN --labId $SL_LAB_ID --failbuild true --teststage "E2E Tests" --useslnode2 -- --recursive mocha/ --timeout=10000                        
       
       - name: Run java e2e tests
         run: |
